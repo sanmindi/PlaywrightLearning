@@ -108,7 +108,14 @@ const [newPage]=await Promise.all([
  page.locator("[href*='documents-request']").click()
 ]);
 
-await newPage.getByRole('link',{name:'Sign Up'}).click();
+const [signUpPage]=await Promise.all([
+    context.waitForEvent("page"),
+newPage.getByRole('link',{name:'Sign Up'}).last().click()
+
+])
+await page.bringToFront();
+await newPage.bringToFront();
+await page.pause();
 }
 
 )
