@@ -33,7 +33,7 @@ await originStations.filter({hasText:'Pune (PNQ)'}).click();
 
 await page.locator("#ctl00_mainContent_ddl_destinationStation1_CTXT").click();
 await page.locator("#ctl00_mainContent_ddl_destinationStation1_CTXTaction").click();
-await page.locator("#ctl00_mainContent_ddl_destinationStation1_CTNR tbody li").getByText(" Delhi (DEL)").click();
+await page.locator("#ctl00_mainContent_ddl_destinationStation1_CTNR tbody li").getByText("Delhi (DEL)").click();
 
 await page.locator("#spclearDate").click();
 await page.locator("#ctl00_mainContent_rbtnl_Trip_1").click();
@@ -114,8 +114,14 @@ newPage.getByRole('link',{name:'Sign Up'}).last().click()
 
 ])
 await page.bringToFront();
-await newPage.bringToFront();
+await page.waitForLoadState();
+
+//Mouse actions
+
+console.log(await page.locator('span').filter({hasText:"Hotels"}).first().hover());
 await page.pause();
+await page.getByText("Holiday Packages").last().hover();
+
 }
 
 )
